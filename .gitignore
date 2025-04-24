@@ -2,3 +2,4 @@ myenv/
 .env
 test.ipynb
 sensor_data.db
+token.txt
