@@ -1,0 +1,34 @@
+Sensor Overview:
+- LIT101: Measures water level in the raw water tank (T101).
+- LIT301: Measures level in the UF feed water tank.
+- FIT201: Measures water flow after pump P101.
+- FIT301: Measures flow rate in ultrafiltration stage.
+- AIT201: Conductivity sensor – detects concentration of dissolved salts.
+- AIT202: pH sensor – detects acidity or alkalinity of water.
+- AIT203: ORP (oxidation-reduction potential) sensor – monitors disinfection process.
+- PIT503: Pressure sensor after the reverse osmosis membrane.
+- UV401: Ultraviolet disinfection unit – removes chlorine to protect RO membrane.
+- DPIT301: Differential pressure sensor across filters – used to detect clogging or pump failure.
+
+Actuator Overview:
+- MV101: Motorized valve controlling inflow into T101.
+- MV201, MV301, MV303: Downstream valves in subsequent filtration stages.
+- P101–P106: Pumps circulating or dosing fluids across treatment stages.
+- P201–P206: Chemical dosing pumps (e.g., acid, base, chlorine).
+- SCADA HMI: Central control interface used to monitor and command the plant.
+
+Common Attack Techniques:
+- PLC override using Pycomm scripts to force valves/pumps ON or OFF.
+- Spoofing sensor values (e.g., LIT101, AIT202) via simulation mode or HMI tag manipulation.
+- Disabling UV401 via alarm setpoint manipulation to damage RO membrane.
+- Exploiting SCADA workstation (e.g., EternalBlue) to alter plant operation logic.
+- Command injection into network devices (e.g., MOXA access points) to disrupt communication.
+
+Physical and Logical Invariants:
+- If tank level (e.g., LIT301) is low, then upstream pumps (P101, P102) should be ON.
+- A pump should never be ON when corresponding flow (FIT) is zero → suspect failure or spoofing.
+- If conductivity (AIT201) rises rapidly while dosing pumps are OFF → suspect sensor spoofing.
+- pH (AIT202) drop without pump activity → possible spoofed value or PLC compromise.
+- LIT101 cannot be simultaneously high and MV101 open + pump ON → conflicting states.
+
+All sensors and actuators operate under physics-based constraints. Use the above rules to reason about sensor inconsistencies, actuator misbehavior, or plausible adversarial manipulations.
