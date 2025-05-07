@@ -7,7 +7,6 @@ Sensor Overview:
 - AIT202: pH sensor – detects acidity or alkalinity of water.
 - AIT203: ORP (oxidation-reduction potential) sensor – monitors disinfection process.
 - PIT503: Pressure sensor after the reverse osmosis membrane.
-- UV401: Ultraviolet disinfection unit – removes chlorine to protect RO membrane.
 - DPIT301: Differential pressure sensor across filters – used to detect clogging or pump failure.
 
 Actuator Overview:
@@ -15,6 +14,10 @@ Actuator Overview:
 - MV201, MV301, MV303: Downstream valves in subsequent filtration stages.
 - P101–P106: Pumps circulating or dosing fluids across treatment stages.
 - P201–P206: Chemical dosing pumps (e.g., acid, base, chlorine).
-- SCADA HMI: Central control interface used to monitor and command the plant.
+- P301: Pumps water through the ultrafiltration unit.
+- P302: Used for UF backwashing controlled by PLC6.
+- P401: Pumps water through the UV dechlorination process.
+- P501: Pumps water through the two-stage reverse osmosis system.
+- UV401: Ultraviolet disinfection unit that can be turned ON/OFF.
 
 All sensors and actuators operate under physics-based constraints. Use the above rules to reason about sensor inconsistencies, actuator misbehavior, or plausible adversarial manipulations.

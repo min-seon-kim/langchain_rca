@@ -1,5 +1,9 @@
 myenv/
+saved_model/
+__pycache__/
 .env
 test.ipynb
 sensor_data.db
 token.txt
+manual_types.txt
+manual_process.txt
