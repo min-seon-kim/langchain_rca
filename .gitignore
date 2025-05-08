@@ -1,6 +1,9 @@
 myenv/
 saved_model/
 __pycache__/
+pdf/
+checkpoints/
+data/
 .env
 test.ipynb
 sensor_data.db
